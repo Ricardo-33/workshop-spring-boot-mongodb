@@ -17,6 +17,9 @@ import com.ricardo.workshopmongo.domain.User;
 import com.ricardo.workshopmongo.dto.UserDTO;
 import com.ricardo.workshopmongo.services.UserService;
 
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
 @RestController
 @RequestMapping(value="/users")
 public class UserResource {
@@ -43,6 +46,13 @@ public class UserResource {
 		obj = service.insert(obj);
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(obj.getId()).toUri();
 		return ResponseEntity.created(uri).build();
+	}
+	
+	@RequestMapping(value="/{id}", method=RequestMethod.DELETE)
+ 	public ResponseEntity<Void> delete(@PathVariable String id) {
+		//log.info("Delete Method initialized");
+		service.delete(id);
+		return ResponseEntity.noContent().build();
 	}
 
 }
