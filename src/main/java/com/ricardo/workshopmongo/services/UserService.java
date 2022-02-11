@@ -31,15 +31,27 @@ public class UserService {
 		return repo.insert(obj);
 	}
 	
-	// Conversão de um UserDTO para User para fazer o POST de um USER
-	public User fromDTO(UserDTO objDto) {
-		return new User(objDto.getId(), objDto.getName(), objDto.getEmail());
-	}
 	
-	// Deleção de um User
+	// Deleção de um User pelo DELETE
 	public void delete(String id) {
 		findById(id);
 		repo.deleteById(id);
 	}
+	
+	// Atualização de um User pelo UPDATE
+	public User update(User obj) {
+		User newObj = findById(obj.getId());
+		updateData(newObj, obj);
+		return repo.save(newObj);
+	}
 
+	private void updateData(User newObj, User obj) {
+		newObj.setName(obj.getName());
+		newObj.setEmail(obj.getEmail());
+	}
+
+	// Conversão de um UserDTO para User para fazer o POST de um USER
+	public User fromDTO(UserDTO objDto) {
+		return new User(objDto.getId(), objDto.getName(), objDto.getEmail());
+	}
 }
