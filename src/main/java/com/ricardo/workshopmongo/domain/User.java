@@ -8,7 +8,6 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
 
 @Document(collection = "user")
@@ -22,7 +21,7 @@ public class User implements Serializable {
 	private String email;
 	
 	// DBRef: indica que esse atributo está referenciando uma outra coleção do MongoDB
-	// lazy: garante que os posts sejam carregados apenas se eles forem acessados
+	// lazy: garante que os posts sejam carregados apenas se eles forem chamados
 	@DBRef(lazy = true) 
 	private List<Post> posts= new ArrayList<>();
 

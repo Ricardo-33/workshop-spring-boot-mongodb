@@ -8,12 +8,10 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 import com.ricardo.workshopmongo.dto.AuthorDTO;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
 
 @Document(collection = "post")
 @Data
-@AllArgsConstructor
 public class Post implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
@@ -23,4 +21,14 @@ public class Post implements Serializable {
 	private String title;
 	private String body;
 	private AuthorDTO author;
+	
+	public Post(String id, Date date, String title, String body, AuthorDTO author) {
+		super();
+		this.id = id;
+		this.date = date;
+		this.title = title;
+		this.body = body;
+		this.author = author;
+	}
+		
 }
