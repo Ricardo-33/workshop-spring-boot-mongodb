@@ -11,6 +11,8 @@ import com.ricardo.workshopmongo.dto.UserDTO;
 import com.ricardo.workshopmongo.repository.UserRepository;
 import com.ricardo.workshopmongo.services.exception.ObjectNotFoundException;
 
+import lombok.extern.slf4j.Slf4j;
+
 @Service
 public class UserService {
 
